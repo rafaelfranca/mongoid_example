@@ -16,6 +16,14 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
     </div>
+    <div id="participants">
+      <% Participant.all.each do |participant| -%>
+        <div>
+          <%= check_box_tag "project[participant_ids][]", participant.id, @project.participants.include?(participant) %>
+          <%= participant.name %>
+        </div>
+      <% end -%>
+    </div>
     <%= f.submit %>
   </div>
 <% end %>
