@@ -2,5 +2,17 @@
 
 <p>Name: <%= @project.name %></p>
 
+<div id="tasks">
+  <h2>Taks</h2>
+
+  <ul>
+    <% @project.tasks.each do |task| -%>
+      <li><%= task.description %> | <%= link_to "Edit", edit_project_task_path(@project, task) %> | <%= link_to "Destroy", [@project, task], :method => :delete, :confirm => 'Are you sure?' %></li>
+    <% end -%>
+  </ul>
+
+  <%= link_to "New Task", new_project_task_path(@project) %>
+</div>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
